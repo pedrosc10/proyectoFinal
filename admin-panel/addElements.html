@@ -13,44 +13,54 @@
     />
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
     <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      href="../assets/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      href="../assets/vendor/bootstrap-icons/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
     <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
+      href="../assets/vendor/glightbox/css/glightbox.min.css"
       rel="stylesheet"
     />
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <form class ="form" method="POST" name="form" id="form">
-        <h1>Insertar coordenada</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">
+      <form class ="form" method="POST" name="form" id="form">
+        <h3>Insertar coordenada</h3>
+        <br>
+        <label for="">Tipo de Elemento</label>
         <select id="categoria" name="categoria">
             <option value="1">Monumento</option>
             <option value="2">Aire libre</option>
             <option value="3">Evento</option>
-        </select><br>
-    	<input type="text" id="latitud" name="latitud" placeholder="Latitud" onblur="check_lat()" value="00.0000000"><br>
-    	<input type="text" id="longitud" name="longitud" placeholder="Longitud" onblur="check_lon()" value="-0.0000000"><br>
-    	<input type="text" id="direccion" name="direccion" placeholder="Direccion" onblur="validateForm()"><br>
-    	<input type="text" id="telefono" name="telefono" placeholder="Telefono" onblur="validateForm()"><br>
-        <input type="text" id="titulo" name="titulo" placeholder="Nombre el lugar" onblur="validateForm()"><br>
-        <textarea  cols="40" rows="10" name="descripcion" id="descripcion"  placeholder="Escribe una descripcion"></textarea><br>
-    	<input type="url" id="img" name="img" placeholder="URL" onblur="validateForm()"><br>
-    	
-    	<button type="button" onclick="insert()" id="register">Guardar coordenada</button>
+        </select><br><br>
+    	<input type="text" id="latitud" name="latitud" placeholder="Latitud" onblur="check_lat()" pattern="^-?\d+(,\d+)*(\.\d+)?$" maxlength="10" required>
+    	<input type="text" id="longitud" name="longitud" placeholder="Longitud" onblur="check_lon()" pattern="^-?\d+(,\d+)*(\.\d+)?$" maxlength="10" required><br><br>
+    	<input type="text" id="direccion" name="direccion" placeholder="Direccion" onblur="validateForm()" pattern="^[#.0-9a-zA-Z\s,-]+$" required>
+    	<input type="text" id="telefono" name="telefono" placeholder="Telefono" onblur="validateForm()" pattern="^\d{9}$" required><br><br>
+      <input type="text" id="titulo" name="titulo" placeholder="Nombre el lugar" onblur="validateForm()" pattern="^[a-zA-Z0-9_ ]*$">
+    	<input type="url" id="img" name="img" placeholder="URL Imagen" onblur="validateForm()" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" required><br><br>
+      <textarea  cols="45" rows="10" name="descripcion" id="descripcion"  placeholder="Escribe una descripcion" ></textarea><br><br>
+    	<button type="button" class="btn btn-danger" onclick="insert()" id="register">Guardar coordenada</button>
+    	<button type="button" class="btn btn-danger" onclick="window.location.href='updateElements.html'" id="register">Panel de Control</button>
     </form>
+    </div>
+  </div>
+</div>
+
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../assets/js/addElements.js"></script>
     <script src="../assets/js/insertCoordenada.js"></script>
